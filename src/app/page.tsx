@@ -7,16 +7,13 @@ import MenuSection from "@/components/MenuItems";
 
 export default function Home() {
 
-  
-  
   return (
     <>
       <ProductMenu />
-
       <CategoriesBar />
-
       <DealsSection />
       <MenuSection />
     </>
   );
+  
 }
