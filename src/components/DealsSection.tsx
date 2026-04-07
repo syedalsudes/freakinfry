@@ -43,7 +43,6 @@ export default function DealsSection() {
     <div className="w-full bg-brand-black py-16">
       <div className="container mx-auto px-4 max-w-7xl">
         
-        {/* --- 1. SEARCH BAR (MODERN DARK) --- */}
         <div className="relative mb-12 max-w-2xl mx-auto group">
           <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none">
             <Search className="text-brand-grey group-focus-within:text-brand-yellow transition-colors" size={20} />
@@ -58,7 +57,6 @@ export default function DealsSection() {
           </button>
         </div>
 
-        {/* --- 2. DISCOUNT BANNER (STICKER STYLE) --- */}
         <div className="relative mb-20 overflow-hidden bg-brand-yellow rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-4 border-black shadow-[8px_8px_0px_0px_#fff]">
           <div className="flex items-center gap-6">
             <div className="bg-black text-brand-yellow p-4 rounded-2xl -rotate-6 animate-pulse">
@@ -79,7 +77,6 @@ export default function DealsSection() {
           </div>
         </div>
 
-        {/* --- 3. SECTION HEADER --- */}
         <div className="text-center mb-16 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
             <span className="text-[120px] font-black text-white uppercase italic select-none">FREAKY</span>
@@ -94,28 +91,23 @@ export default function DealsSection() {
           </div>
         </div>
 
-        {/* --- 4. DEALS GRID --- */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {DEALS_DATA.map((deal) => (
             <div key={deal.id} className="relative group overflow-hidden rounded-[40px] aspect-[4/5] border border-white/5 shadow-2xl cursor-pointer">
-              {/* Background Image with Zoom */}
               <img 
                 src={deal.image} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                 alt={deal.title} 
               />
               
-              {/* Overlay Gradients */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
               
-              {/* Floating Tag */}
               <div className="absolute top-6 left-6">
                 <span className="bg-brand-yellow text-black text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
                   {deal.tag}
                 </span>
               </div>
 
-              {/* Card Content */}
               <div className="absolute inset-x-0 bottom-0 p-8 transform group-hover:-translate-y-2 transition-transform">
                 <h4 className="text-white font-black text-3xl tracking-tighter uppercase whitespace-pre-line leading-[0.9] mb-4">
                   {deal.title}
@@ -134,7 +126,6 @@ export default function DealsSection() {
                     </div>
                   </div>
                   
-                  {/* Action Icon */}
                   <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center text-white group-hover:bg-brand-yellow group-hover:text-black transition-all duration-300">
                     <PlusIcon />
                   </div>
