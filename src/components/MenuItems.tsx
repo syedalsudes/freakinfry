@@ -20,90 +20,31 @@ interface ProductCardProps {
 export const menuData = [
 
   {
-    category: "Wings",
-    items: [
-      {
-        title: "Crispy Wings",
-        description: "Crispy coated wings",
-        price: 550,
-        image: "/menupic/crispywings.png"
-      },
-      {
-        title: "Hot & Sour",
-        description: "Spicy tangy wings",
-        price: 500,
-        image: "/menupic/wings.png"
-      },
-      {
-        title: "BBQ Wings",
-        description: "BBQ flavored wings",
-        price: 500,
-        image: "/menupic/wings.png"
-      },
-      {
-        title: "Crispy Wings",
-        description: "Crispy coated wings",
-        price: 950,
-        image: "/menupic/crispywings.png"
-      }
-    ]
-  },
-  {
-    category: "Premium Beef Burgers",
-    items: [
-      {
-        title: "American Fromage",
-        description: "400g beef, cheese, lettuce, sauce",
-        price: 1800,
-        image: "/menupic/beefburger.png"
-      },
-      {
-        title: "Jaw Breaker",
-        description: "4 patties, onion rings, cheese, sauces",
-        price: 1750,
-        image: "/menupic/beefburger.png"
-      },
-      {
-        title: "Triple Barrel",
-        description: "3 smash patties, pepperoni, cheese, spicy sauce",
-        price: 1450,
-        image: "/menupic/beefburger.png"
-      },
-      {
-        title: "Mushroom Legend",
-        description: "3 patties, cheddar, mushroom sauce",
-        price: 1350,
-        image: "/menupic/beefburger.png"
-      }
-    ]
-  },
-
-  {
     category: "Chicken Burgers",
     items: [
       {
         title: "Double Patty Crunch",
         description: "02 crispy chicken patties, iceberg, chipotle sauce",
         price: 750,
-        image: "/menupic/chickenburger.png"
+        image: "/menupic/doubleburger.png"
       },
       {
         title: "Dynamite Salsa",
         description: "Salsa chicken, cheese, jalapenos, mushrooms, dynamite sauce",
         price: 750,
-        image: "/menupic/chickenburger.png"
+        image: "/menupic/salsa.png"
       },
       {
         title: "Double Grill Burger",
         description: "02 grilled patties with cheese & veggies",
         price: 750,
-        image: "/menupic/chickenburger.png"
+        image: "/menupic/doublegrill.png"
       },
       {
         title: "Hungry Fire Bite",
         description: "Crispy chicken, sausages, iceberg, spicy sauce",
         price: 600,
-        image: "/menupic/chickenburger.png"
+        image: "/menupic/firebite.png"
       }
     ]
   },
@@ -115,58 +56,29 @@ export const menuData = [
         title: "Thick Beef",
         description: "150g beef, cheese, pepperoni, sauce",
         price: 850,
-        image: "/burger.png"
+        image: "/menupic/thickburger.png"
       },
       {
         title: "Mushroom N Swiss",
         description: "Beef patty, swiss cheese, mushroom sauce",
         price: 850,
-        image: "/burger.png"
+        image: "/menupic/doubleburger.png"
       },
       {
         title: "Smash Beef with Bacon",
         description: "Smash patty with bacon",
         price: 650,
-        image: "/burger.png"
+        image: "/menupic/baconburger.png"
       },
       {
         title: "Kids Beef",
         description: "100g beef, single cheese",
         price: 600,
-        image: "/burger.png"
+        image: "/menupic/kidsbeef.png"
       }
     ]
   },
 
-  {
-    category: "Fries",
-    items: [
-      {
-        title: "Mexican Beef Fries",
-        description: "Spicy beef mince, mozzarella cheese, sauteed veggies",
-        price: 850,
-        image: "/menupic/fries.png"
-      },
-      {
-        title: "Cheesy Chunks",
-        description: "Melted cheese, Italian sauce, jalapenos, green leaves",
-        price: 600,
-        image: "/menupic/fizzafries.png"
-      },
-      {
-        title: "Chicken Chunks",
-        description: "Chicken chunks with buffalo & BBQ sauce",
-        price: 550,
-        image: "/menupic/fries.png"
-      },
-      {
-        title: "Pepperoni Fries",
-        description: "Chicken pepperoni, mushrooms, oyster sauce",
-        price: 450,
-        image: "/menupic/fizzafries.png"
-      }
-    ]
-  },
 
   {
     category: "Fried Chicken",
@@ -259,6 +171,36 @@ export const menuData = [
   },
 
   {
+    category: "Premium Beef Burgers",
+    items: [
+      {
+        title: "American Fromage",
+        description: "400g beef, cheese, lettuce, sauce",
+        price: 1800,
+        image: "/menupic/cheeze.png"
+      },
+      {
+        title: "Jaw Breaker",
+        description: "4 patties, onion rings, cheese, sauces",
+        price: 1750,
+        image: "/menupic/jawbreaker.png"
+      },
+      {
+        title: "Triple Barrel",
+        description: "3 smash patties, pepperoni, cheese, spicy sauce",
+        price: 1450,
+        image: "/menupic/trbreaker.png"
+      },
+      {
+        title: "Mushroom Legend",
+        description: "3 patties, cheddar, mushroom sauce",
+        price: 1350,
+        image: "/menupic/mashroom.png"
+      }
+    ]
+  },
+
+  {
     category: "Add Ons",
     items: [
       { title: "Beef Patty", description: "Extra beef patty", price: 350, image: "/menupic/beefburger.png" },
@@ -277,35 +219,16 @@ export const menuData = [
         price: 3300,
         image: "/menupic/pretzels.png"
       },
-      {
-        title: "Volcano Pretzel",
-        description: "Loaded beef, chicken, cheese, sauces",
-        price: 3300,
-        image: "/menupic/pretzels.png"
-      },
-      {
-        title: "Volcano Pretzel",
-        description: "Loaded beef, chicken, cheese, sauces",
-        price: 3300,
-        image: "/menupic/pretzels.png"
-      },
-      {
-        title: "Volcano Pretzel",
-        description: "Loaded beef, chicken, cheese, sauces",
-        price: 3300,
-        image: "/menupic/pretzels.png"
-      }
     ]
   },
 
-  // 🥤 LOWEST PRIORITY
   {
     category: "Beverages",
     items: [
-      { title: "Drink (Regular)", description: "Soft drink", price: 100, image: "/menupic/water.png" },
-      { title: "Drink (Small)", description: "Soft drink", price: 50, image: "/menupic/water.png" },
-      { title: "Water", description: "Mineral water", price: 80, image: "/menupic/water.png" },
-      { title: "Drink (Regular)", description: "Soft drink", price: 100, image: "/menupic/water.png" }
+      { title: "Water", description: "Soft drink", price: 100, image: "/menupic/water.png" },
+      { title: "Marinda", description: "Soft drink", price: 50, image: "/menupic/marinda.png" },
+      { title: "Coke", description: "Mineral water", price: 80, image: "/menupic/cola.png" },
+      { title: "Pepsi", description: "Soft drink", price: 100, image: "/menupic/pepsi.png" }
     ]
   }
 
