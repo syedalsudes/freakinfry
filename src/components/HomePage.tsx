@@ -1,45 +1,101 @@
 "use client";
 
-
+import React, { useState } from 'react';
 import { MapPin, Phone, ShoppingBag, Menu, ShoppingCart, ChevronRight, Zap } from 'lucide-react';
 import Image from 'next/image';
 
 export default function FreakInFryHome() {
 
+
+  const [selectedBranch, setSelectedBranch] = useState("Select Outlet");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const branches = ["Hussainabad", "Bahadarabad"];
+
   return (
+
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#FBA108] selection:text-black">
 
-      <nav className="relative z-[100] bg-black/80 backdrop-blur-xl px-4 py-4 md:px-10 flex justify-between items-center border-b border-white/10">
-        <div className="hidden lg:flex items-center space-x-6">
-          <div className="group cursor-pointer">
-            <p className="text-[10px] font-bold text-[#A3A3A3] uppercase leading-none tracking-widest">Branch</p>
-            <div className="flex items-center space-x-1 mt-1">
-              <span className="text-sm font-bold text-white group-hover:text-[#FBA108] transition-colors">Select Outlet</span>
-              <ChevronRight size={14} className="text-[#FBA108]" />
+      <nav className="relative z-[100] bg-black/80 backdrop-blur-xl px-4 py-3 md:px-10 flex justify-between items-center border-b border-white/10">
+        <div className="hidden lg:flex items-center space-x-8">
+          {/* Branch Selector - Bigger Container */}
+          <div
+            className="relative group cursor-pointer py-2"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            <p className="text-[11px] font-extrabold text-[#A3A3A3] uppercase leading-none tracking-[0.15em] mb-1.5">
+              Select Branch
+            </p>
+            <div className="flex items-center space-x-2">
+              <span className="text-base font-black text-white group-hover:text-[#FBA108] transition-colors">
+                {selectedBranch}
+              </span>
+              <ChevronRight
+                size={18}
+                className={`text-[#FBA108] transition-transform duration-300 ${isDropdownOpen ? 'rotate-90' : ''}`}
+              />
+            </div>
+
+            {/* Dropdown - Wider and Better Padding */}
+            {isDropdownOpen && (
+              <div className="absolute top-[110%] left-0 w-64 bg-[#111111] border border-white/10 rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-in fade-in slide-in-from-top-4 z-50">
+                {branches.map((branch) => (
+                  <div
+                    key={branch}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedBranch(branch);
+                      setIsDropdownOpen(false);
+                    }}
+                    className="px-6 py-4 text-sm font-bold text-white hover:bg-[#FBA108] hover:text-black transition-all flex items-center justify-between group/item"
+                  >
+                    <div className="flex items-center gap-3">
+                      <MapPin size={16} className="text-[#FBA108] group-hover/item:text-black" />
+                      {branch}
+                    </div>
+                    <div className="w-2 h-2 rounded-full bg-[#FBA108] opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Divider - Taller */}
+          <div className="h-10 w-[1px] bg-white/20"></div>
+
+          {/* Phone Button - Bigger and More Chunky */}
+          <a
+            href="tel:03182448432"
+            className="flex items-center space-x-3 bg-[#FBA108] text-black px-7 py-3.5 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#FBA108]/10 cursor-pointer"
+          >
+            <Phone size={18} fill="black" />
+            <span className="text-sm font-[1000] tracking-tight">03182448432</span>
+          </a>
+        </div>
+
+        <div className="absolute z-[110] left-1/2 -translate-x-1/2 top-0">
+          <div className="bg-black px-6 py-7 rounded-b-[2.5rem] shadow-[0_10px_40px_rgba(251,161,8,0.2)] flex items-center justify-center min-w-[120px] border-x border-b border-[#FBA108]/50">
+            <div className="relative w-20 h-20 md:w-24 md:h-24">
+              <Image
+                src="/logo.png"
+                alt="Freak In Fry Logo"
+                fill
+                priority
+                className="object-contain"
+              />
             </div>
           </div>
-          <div className="h-8 w-[1px] bg-white/10"></div>
-          <div className="flex items-center space-x-3 bg-[#FBA108] text-black px-5 py-2 rounded-full hover:scale-105 transition-transform cursor-pointer">
-            <Phone size={14} fill="black" />
-            <span className="text-xs font-black tracking-wider">03182448432</span>
-          </div>
         </div>
 
-        <div className="absolute z-[110] left-1/2 -translate-x-1/2 top-0 pt-2">
-          <div className="bg-black text-white px-6 py-16 rounded-b-[2.5rem] shadow-[0_10px_40px_rgba(251,161,8,0.2)] flex flex-col items-center justify-center min-w-[140px] border-x border-b border-[#FBA108]/50">
-            <span className="text-2xl font-[900] leading-none tracking-tighter text-center uppercase italic">
-              FREAK<br /><span className="text-[#FBA108] not-italic">IN FRY</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-3 md:space-x-5">
-          <button className="hidden sm:block text-[11px] font-black uppercase tracking-wider text-[#A3A3A3] hover:text-[#FBA108] transition-colors">
+        <div className="flex items-center space-x-6 md:space-x-8">
+          <button className="hidden sm:block text-sm font-[1000] uppercase tracking-[0.15em] text-[#A3A3A3] hover:text-[#FBA108] transition-all hover:scale-105 active:scale-95">
             Franchise
           </button>
-          <div className="relative bg-[#1A1A1A] p-3 rounded-2xl cursor-pointer border border-white/5 hover:border-[#FBA108]/50 transition-all active:scale-90 group">
-            <ShoppingCart size={22} className="text-[#FBA108] group-hover:scale-110 transition-transform" />
-            <span className="absolute -top-1 -right-1 bg-[#FBA108] text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-black">
+
+          <div className="relative bg-[#1A1A1A] p-4 rounded-2xl cursor-pointer border border-white/10 hover:border-[#FBA108]/50 hover:bg-[#222222] transition-all active:scale-90 group shadow-2xl">
+            <ShoppingCart size={26} className="text-[#FBA108] group-hover:scale-110 transition-transform" />
+
+            <span className="absolute -top-2 -right-2 bg-[#FBA108] text-black text-[11px] font-[1000] w-6 h-6 flex items-center justify-center rounded-full border-[3px] border-black shadow-lg">
               0
             </span>
           </div>
