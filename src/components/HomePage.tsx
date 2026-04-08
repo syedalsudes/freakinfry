@@ -7,7 +7,7 @@ import Image from 'next/image';
 export default function FreakInFryHome() {
   const [selectedBranch, setSelectedBranch] = useState("Select Outlet");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false); 
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const branches = ["Hussainabad", "Bahadarabad"];
 
@@ -19,76 +19,62 @@ export default function FreakInFryHome() {
   ];
 
   return (
-    <div className={`min-h-screen bg-black text-white font-sans selection:bg-[#FBA108] selection:text-black ${isCartOpen ? 'overflow-hidden' : ''}`}>
-      
+    <div className={`min-h-screen bg-black text-white font-sans selection:bg-[#FBA108] selection:text-black overflow-x-hidden ${isCartOpen ? 'overflow-hidden' : ''}`}>
+
       {isCartOpen && (
-        <div className="fixed inset-0 z-[200] flex justify-end">
-          <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+        <div className="fixed inset-0 z-[300] flex justify-end">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
             onClick={() => setIsCartOpen(false)}
           />
-          
+
           <div className="relative w-full max-w-[400px] bg-[#111111] h-full shadow-2xl border-l border-white/10 flex flex-col animate-in slide-in-from-right duration-300">
-            <div className="p-6 border-b border-white/10 flex justify-between items-center bg-[#1A1A1A]">
+            <div className="p-5 border-b border-white/10 flex justify-between items-center bg-[#1A1A1A]">
               <div className="flex items-center gap-3">
-                <ShoppingCart className="text-[#FBA108]" size={24} />
-                <h2 className="text-xl font-black uppercase tracking-tighter">Your Bucket</h2>
+                <ShoppingCart className="text-[#FBA108]" size={20} />
+                <h2 className="text-lg font-black uppercase tracking-tighter">Your Bucket</h2>
               </div>
-              <button 
-                onClick={() => setIsCartOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              >
+              <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full">
                 <X size={24} />
               </button>
             </div>
 
-            {/* Cart Items List */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex gap-4 group">
-                  <div className="relative w-20 h-20 bg-[#1A1A1A] rounded-2xl border border-white/5 overflow-hidden flex-shrink-0">
-                    <Image src={item.img} alt={item.name} fill className="object-contain p-2" />
+                <div key={item.id} className="flex gap-4 p-3 bg-white/5 rounded-2xl border border-white/5">
+                  <div className="relative w-16 h-16 bg-black rounded-xl overflow-hidden flex-shrink-0">
+                    <Image src={item.img} alt={item.name} fill className="object-contain p-1" />
                   </div>
-                  <div className="flex-1 flex flex-col justify-center">
+                  <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start">
-                      <h3 className="font-bold text-sm uppercase tracking-tight">{item.name}</h3>
+                      <h3 className="font-bold text-xs uppercase truncate">{item.name}</h3>
                       <button className="text-white/30 hover:text-red-500 transition-colors">
-                        <Trash2 size={16} />
+                        <Trash2 size={14} />
                       </button>
                     </div>
-                    <p className="text-[#FBA108] font-black mt-1">Rs. {item.price}</p>
-                    
+                    <p className="text-[#FBA108] font-black text-sm mt-0.5">Rs. {item.price}</p>
                     <div className="flex items-center gap-3 mt-2">
-                       <div className="flex items-center bg-black border border-white/10 rounded-lg px-2 py-1">
-                          <button className="text-[#FBA108] hover:scale-125 transition-transform"><Minus size={14} /></button>
-                          <span className="mx-3 text-xs font-bold">{item.qty}</span>
-                          <button className="text-[#FBA108] hover:scale-125 transition-transform"><Plus size={14} /></button>
-                       </div>
+                      <div className="flex items-center bg-black border border-white/10 rounded-lg px-2 py-1">
+                        <button className="text-[#FBA108]"><Minus size={12} /></button>
+                        <span className="mx-3 text-xs font-bold">{item.qty}</span>
+                        <button className="text-[#FBA108]"><Plus size={12} /></button>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Footer / Summary */}
             <div className="p-6 bg-[#1A1A1A] border-t border-white/10 space-y-4">
-              <div className="flex justify-between items-center text-gray-400 text-sm">
-                <span>Subtotal</span>
-                <span className="text-white font-bold">Rs. 2,320</span>
-              </div>
               <div className="flex justify-between items-center">
                 <span className="text-lg font-black uppercase">Total</span>
                 <span className="text-2xl font-black text-[#FBA108]">Rs. 2,320</span>
               </div>
-              
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <button 
-                  onClick={() => setIsCartOpen(false)}
-                  className="py-4 rounded-xl border border-white/10 font-bold text-sm uppercase hover:bg-white/5 transition-all"
-                >
-                  See More
+              <div className="grid grid-cols-2 gap-3">
+                <button onClick={() => setIsCartOpen(false)} className="py-4 rounded-xl border border-white/10 font-bold text-[10px] uppercase">
+                  Add More
                 </button>
-                <button className="bg-[#FBA108] text-black py-4 rounded-xl font-[1000] text-sm uppercase hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-[#FBA108]/20">
+                <button className="bg-[#FBA108] text-black py-4 rounded-xl font-black text-[10px] uppercase shadow-lg shadow-[#FBA108]/20">
                   Checkout
                 </button>
               </div>
@@ -97,134 +83,124 @@ export default function FreakInFryHome() {
         </div>
       )}
 
-      {/* --- EXISTING NAV --- */}
       <nav className="relative z-[100] bg-black/80 backdrop-blur-xl px-4 py-3 md:px-10 flex justify-between items-center border-b border-white/10">
-        <div className="hidden lg:flex items-center space-x-8">
-          <div
-            className="relative group cursor-pointer py-2"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            <p className="text-[11px] font-extrabold text-[#A3A3A3] uppercase leading-none tracking-[0.15em] mb-1.5">
-              Select Branch
-            </p>
-            <div className="flex items-center space-x-2">
-              <span className="text-base font-black text-white group-hover:text-[#FBA108] transition-colors">
-                {selectedBranch}
-              </span>
-              <ChevronRight
-                size={18}
-                className={`text-[#FBA108] transition-transform duration-300 ${isDropdownOpen ? 'rotate-90' : ''}`}
-              />
+        <div className="flex items-center space-x-2 md:space-x-8">
+          {/* --- Branch Selector --- */}
+          <div className="hidden lg:block relative">
+            <div
+              className="cursor-pointer group"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <p className="text-[10px] font-extrabold text-[#A3A3A3] uppercase tracking-widest mb-1 group-hover:text-[#FBA108] transition-colors">
+                Select Branch
+              </p>
+              <div className="flex items-center space-x-1">
+                <span className="text-sm font-black text-white uppercase italic">{selectedBranch}</span>
+                <ChevronRight
+                  size={16}
+                  className={`text-[#FBA108] transition-transform duration-300 ${isDropdownOpen ? 'rotate-90' : ''}`}
+                />
+              </div>
             </div>
 
             {isDropdownOpen && (
-              <div className="absolute top-[110%] left-0 w-64 bg-[#111111] border border-white/10 rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-in fade-in slide-in-from-top-4 z-50">
-                {branches.map((branch) => (
-                  <div
-                    key={branch}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedBranch(branch);
-                      setIsDropdownOpen(false);
-                    }}
-                    className="px-6 py-4 text-sm font-bold text-white hover:bg-[#FBA108] hover:text-black transition-all flex items-center justify-between group/item"
-                  >
-                    <div className="flex items-center gap-3">
-                      <MapPin size={16} className="text-[#FBA108] group-hover/item:text-black" />
-                      {branch}
-                    </div>
-                    <div className="w-2 h-2 rounded-full bg-[#FBA108] opacity-0 group-hover/item:opacity-100 transition-opacity" />
+              <>
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setIsDropdownOpen(false)}
+                />
+
+                <div className="absolute top-full left-0 mt-3 w-56 bg-[#111111] border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="p-2 space-y-1">
+                    {branches.map((branch) => (
+                      <button
+                        key={branch}
+                        onClick={() => {
+                          setSelectedBranch(branch);
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-3 rounded-xl text-[11px] font-black uppercase tracking-tighter transition-all flex justify-between items-center group
+                ${selectedBranch === branch
+                            ? 'bg-[#FBA108] text-black'
+                            : 'text-white hover:bg-white/5 hover:text-[#FBA108]'
+                          }`}
+                      >
+                        {branch}
+                        {selectedBranch === branch && <Zap size={12} fill="black" />}
+                      </button>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              </>
             )}
           </div>
 
-          <div className="h-10 w-[1px] bg-white/20"></div>
-
-          <a
-            href="tel:03182448432"
-            className="flex items-center space-x-3 bg-[#FBA108] text-black px-7 py-3.5 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#FBA108]/10 cursor-pointer"
-          >
+          <a className="flex items-center justify-center bg-[#FBA108] text-black p-3 md:px-6 md:py-3 rounded-xl md:rounded-2xl hover:scale-105 transition-all">
             <Phone size={18} fill="black" />
-            <span className="text-sm font-[1000] tracking-tight">03182448432</span>
+            <span className="hidden md:inline ml-2 text-sm font-black uppercase">03182448432</span>
           </a>
         </div>
 
-        <div className="absolute z-[110] left-1/2 -translate-x-1/2 top-0">
-          <div className="bg-black px-6 py-7 rounded-b-[2.5rem] shadow-[0_10px_40px_rgba(251,161,8,0.2)] flex items-center justify-center min-w-[120px] border-x border-b border-[#FBA108]/50">
-            <div className="relative w-20 h-20 md:w-24 md:h-24">
-              <Image
-                src="/logo.png"
-                alt="Freak In Fry Logo"
-                fill
-                priority
-                className="object-contain"
-              />
+        <div className="absolute left-1/2 -translate-x-1/2 top-0">
+          <div className="bg-black px-4 py-4 md:px-6 md:py-7 rounded-b-[1.5rem] md:rounded-b-[2.5rem] border-x border-b border-[#FBA108]/30 shadow-lg">
+            <div className="relative w-12 h-12 md:w-20 md:h-20">
+              <Image src="/logo.png" alt="Logo" fill priority className="object-contain" />
             </div>
           </div>
         </div>
 
-        <div className="flex items-center space-x-6 md:space-x-8">
-          <button className="hidden sm:block text-sm font-[1000] uppercase tracking-[0.15em] text-[#A3A3A3] hover:text-[#FBA108] transition-all hover:scale-105 active:scale-95">
-            Franchise
-          </button>
-
-          {/* CART TRIGGER BUTTON */}
-          <div 
-            onClick={() => setIsCartOpen(true)}
-            className="relative bg-[#1A1A1A] p-4 rounded-2xl cursor-pointer border border-white/10 hover:border-[#FBA108]/50 hover:bg-[#222222] transition-all active:scale-90 group shadow-2xl"
-          >
-            <ShoppingCart size={26} className="text-[#FBA108] group-hover:scale-110 transition-transform" />
-            <span className="absolute -top-2 -right-2 bg-[#FBA108] text-black text-[11px] font-[1000] w-6 h-6 flex items-center justify-center rounded-full border-[3px] border-black shadow-lg">
+        <div className="flex items-center space-x-3 md:space-x-6">
+          <button className="hidden sm:block text-[10px] font-black uppercase tracking-widest text-[#A3A3A3] hover:text-[#FBA108]">Franchise</button>
+          <div onClick={() => setIsCartOpen(true)} className="relative bg-[#1A1A1A] p-3 md:p-4 rounded-xl md:rounded-2xl cursor-pointer border border-white/10 group">
+            <ShoppingCart size={22} className="text-[#FBA108]" />
+            <span className="absolute -top-1 -right-1 bg-[#FBA108] text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-black">
               {cartItems.length}
             </span>
           </div>
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative z-0 mt-10 mb-16 mx-auto w-[95%] max-w-7xl">
-        <div className="relative h-[450px] md:h-[600px] w-full rounded-[3rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl group">
-          <div className="absolute top-0 right-0 w-full md:w-[55%] h-full bg-[#FBA108] skew-x-[-12deg] translate-x-24 md:translate-x-20 opacity-100 transition-transform group-hover:translate-x-16 duration-700 overflow-visible">
-            <div className="inset-0 skew-x-[12deg] relative h-full w-full flex items-center justify-center">
-              <div className="relative h-[80%] w-[80%] md:h-[90%] md:w-[90%] transition-transform duration-700 group-hover:scale-110">
-                <Image
-                  src="/meal.png"
-                  alt="Hero Deal Burger"
-                  fill
-                  priority
-                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                />
-              </div>
+      <section className="relative z-0 mt-4 md:mt-10 mb-16 mx-auto w-[94%] max-w-7xl">
+        <div className="relative min-h-[600px] md:h-[650px] w-full rounded-[2.5rem] md:rounded-[3.5rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row">
+
+          <div className="absolute top-0 right-0 w-full md:w-[55%] h-[40%] md:h-full bg-[#FBA108] md:skew-x-[-12deg] md:translate-x-20 z-0" />
+          <div className="relative w-full h-[250px] md:h-full md:w-1/2 md:absolute md:right-0 z-10 flex items-center justify-center p-6 md:p-12 order-first md:order-none">
+            <div className="relative w-full h-full transition-transform duration-700 hover:scale-105">
+              <Image
+                src="/meal.png"
+                alt="Hero Deal"
+                fill
+                priority
+                className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              />
             </div>
           </div>
 
-          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20 z-20">
-            <div className="bg-black text-[#FBA108] px-4 py-2 rounded-full w-fit flex items-center space-x-2 mb-6 animate-pulse border border-[#FBA108]/20 shadow-[0_0_15px_rgba(251,161,8,0.1)]">
-              <Zap size={14} fill="currentColor" />
-              <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">Most Wanted Deal</span>
+          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-0">
+            <div className="bg-black/50 backdrop-blur-md text-[#FBA108] px-3 py-1.5 rounded-full w-fit flex items-center space-x-2 mb-4 md:mb-8 border border-[#FBA108]/20">
+              <Zap size={12} fill="currentColor" />
+              <span className="text-[9px] md:text-xs font-black uppercase tracking-widest">Most Wanted Deal</span>
             </div>
 
-            <h2 className="text-white text-5xl md:text-8xl font-[900] leading-[0.85] tracking-tighter uppercase pointer-events-none">
+            <h2 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[900] leading-[0.95] tracking-tighter uppercase italic">
               CRUNCHY <br />
-              <span className="text-[#FBA108] italic drop-shadow-lg">FREAKY</span>
-              <span className="block md:inline ml-0 md:ml-4">BOX</span>
+              <span className="text-[#FBA108]">FREAKY</span> <br className="md:hidden" />
+              <span className="md:ml-4">BOX</span>
             </h2>
 
-            <p className="text-[#A3A3A3] mt-8 max-w-[280px] md:max-w-md text-sm md:text-lg font-medium leading-relaxed">
-              2 Zingers, 2 Fries, 2 Drinks & a whole lot of Freakiness packed in one box.
-              <span className="text-[#FBA108] font-bold ml-1">Limited time offer!</span>
+            <p className="text-[#A3A3A3] mt-6 max-w-xs md:max-w-md text-sm md:text-lg font-medium leading-relaxed">
+              2 Zingers, 2 Fries, 2 Drinks & a whole lot of Freakiness.
+              <span className="text-[#FBA108] font-bold block mt-1">Limited time offer!</span>
             </p>
 
-            <button className="mt-10 bg-white text-black font-black uppercase py-4 px-10 rounded-2xl w-fit flex items-center space-x-3 hover:bg-[#FBA108] hover:scale-105 active:scale-95 transition-all group/btn shadow-xl shadow-black/20">
+            <button className="mt-8 bg-white text-black font-black uppercase py-4 px-8 md:px-10 rounded-2xl w-full md:w-fit flex items-center justify-center space-x-3 hover:bg-[#FBA108] transition-all group">
               <span>Order Now</span>
-              <ChevronRight className="group-hover/btn:translate-x-1 transition-transform" strokeWidth={3} />
+              <ChevronRight className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
             </button>
           </div>
 
-          <div className="absolute bottom-[-40px] left-[-20px] select-none pointer-events-none opacity-[0.03] md:opacity-[0.05] z-0">
-            <h1 className="text-white text-[12rem] md:text-[22rem] font-black italic uppercase leading-none">
+          <div className="absolute bottom-[-10px] left-[-10px] select-none pointer-events-none opacity-[0.03] z-0">
+            <h1 className="text-white text-[15vw] md:text-[20rem] font-black italic uppercase leading-none">
               FREAK
             </h1>
           </div>
@@ -237,7 +213,8 @@ export default function FreakInFryHome() {
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         body {
           font-family: 'Inter', sans-serif;
-          background-color: #000000;
+          background-color: #000;
+          overflow-x: hidden;
         }
       `}</style>
     </div>
