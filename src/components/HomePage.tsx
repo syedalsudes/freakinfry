@@ -85,7 +85,6 @@ export default function FreakInFryHome() {
 
       <nav className="relative z-[100] bg-black/80 backdrop-blur-xl px-4 py-3 md:px-10 flex justify-between items-center border-b border-white/10">
         <div className="flex items-center space-x-2 md:space-x-8">
-          {/* --- Branch Selector --- */}
           <div className="hidden lg:block relative">
             <div
               className="cursor-pointer group"
@@ -160,14 +159,15 @@ export default function FreakInFryHome() {
         </div>
       </nav>
 
-      <section className="relative z-0 mt-4 md:mt-10 mb-16 mx-auto w-[94%] max-w-7xl">
-        <div className="relative min-h-[600px] md:h-[650px] w-full rounded-[2.5rem] md:rounded-[3.5rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row">
+      <section className="relative z-0 mt-4 md:mt-10 mb-16 mx-auto w-[94%] max-w-7xl 2xl:max-w-[1600px]">
 
-          <div className="absolute top-0 right-0 w-full md:w-[55%] h-[40%] md:h-full bg-[#FBA108] md:skew-x-[-12deg] md:translate-x-20 z-0" />
-          <div className="relative w-full h-[250px] md:h-full md:w-1/2 md:absolute md:right-0 z-10 flex items-center justify-center p-6 md:p-12 order-first md:order-none">
-            <div className="relative w-full h-full transition-transform duration-700 hover:scale-105">
+        <div className="relative min-h-[600px] md:h-[650px] 2xl:h-[800px] w-full rounded-[2.5rem] md:rounded-[3.5rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row">
+          <div className="absolute top-0 right-0 w-full md:w-[55%] 2xl:w-[50%] h-[40%] md:h-full bg-[#FBA108] md:skew-x-[-12deg] md:translate-x-20 z-0" />
+
+          <div className="relative w-full h-[250px] md:h-full md:w-1/2 md:absolute md:right-0 z-10 flex items-center justify-center p-6 md:p-12 2xl:p-20 order-first md:order-none">
+            <div className="relative w-full h-full transition-transform duration-700 hover:scale-110 2xl:scale-110">
               <Image
-                src="/meal.png"
+                src="/banner.png"
                 alt="Hero Deal"
                 fill
                 priority
@@ -176,31 +176,32 @@ export default function FreakInFryHome() {
             </div>
           </div>
 
-          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-8 md:py-0">
+          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-24 2xl:px-32 py-8 md:py-0">
+
             <div className="bg-black/50 backdrop-blur-md text-[#FBA108] px-3 py-1.5 rounded-full w-fit flex items-center space-x-2 mb-4 md:mb-8 border border-[#FBA108]/20">
-              <Zap size={12} fill="currentColor" />
-              <span className="text-[9px] md:text-xs font-black uppercase tracking-widest">Most Wanted Deal</span>
+              <Zap size={14} fill="currentColor" />
+              <span className="text-[10px] md:text-xs 2xl:text-sm font-black uppercase tracking-widest">Most Wanted Deal</span>
             </div>
 
-            <h2 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[900] leading-[0.95] tracking-tighter uppercase italic">
+            <h2 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl 2xl:text-[9rem] font-[900] leading-[0.9] tracking-tighter uppercase italic">
               CRUNCHY <br />
               <span className="text-[#FBA108]">FREAKY</span> <br className="md:hidden" />
               <span className="md:ml-4">BOX</span>
             </h2>
 
-            <p className="text-[#A3A3A3] mt-6 max-w-xs md:max-w-md text-sm md:text-lg font-medium leading-relaxed">
+            <p className="text-[#A3A3A3] mt-6 max-w-xs md:max-w-md 2xl:max-w-xl text-sm md:text-lg 2xl:text-2xl font-medium leading-relaxed">
               2 Zingers, 2 Fries, 2 Drinks & a whole lot of Freakiness.
               <span className="text-[#FBA108] font-bold block mt-1">Limited time offer!</span>
             </p>
 
-            <button className="mt-8 bg-white text-black font-black uppercase py-4 px-8 md:px-10 rounded-2xl w-full md:w-fit flex items-center justify-center space-x-3 hover:bg-[#FBA108] transition-all group">
+            <button className="mt-8 2xl:mt-12 bg-white text-black font-black uppercase py-4 2xl:py-6 px-8 md:px-10 2xl:px-14 rounded-2xl 2xl:rounded-3xl w-full md:w-fit flex items-center justify-center space-x-3 hover:bg-[#FBA108] transition-all group text-sm 2xl:text-xl">
               <span>Order Now</span>
               <ChevronRight className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
             </button>
           </div>
 
           <div className="absolute bottom-[-10px] left-[-10px] select-none pointer-events-none opacity-[0.03] z-0">
-            <h1 className="text-white text-[15vw] md:text-[20rem] font-black italic uppercase leading-none">
+            <h1 className="text-white text-[15vw] md:text-[20rem] 2xl:text-[28rem] font-black italic uppercase leading-none">
               FREAK
             </h1>
           </div>

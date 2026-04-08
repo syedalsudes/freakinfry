@@ -24,29 +24,64 @@ export const menuData = [
   {
     category: "Chicken Burgers",
     items: [
-      {
-        title: "Double Patty Crunch",
-        description: "02 crispy chicken patties, iceberg, chipotle sauce",
-        price: 750,
-        image: "/menupic/doubleburger.png"
-      },
-      {
-        title: "Dynamite Salsa",
-        description: "Salsa chicken, cheese, jalapenos, mushrooms, dynamite sauce",
-        price: 750,
-        image: "/menupic/salsa.png"
-      },
+
       {
         title: "Double Grill Burger",
         description: "02 grilled patties with cheese & veggies",
         price: 750,
         image: "/menupic/doublegrill.png"
       },
+
       {
-        title: "Hungry Fire Bite",
-        description: "Crispy chicken, sausages, iceberg, spicy sauce",
-        price: 600,
-        image: "/menupic/firebite.png"
+        title: "Double Patty Crunch",
+        description: "02 crispy chicken patties, iceberg, chipotle sauce",
+        price: 750,
+        image: "/menupic/doubleburger.png"
+      },
+
+      {
+        title: "Double Grill Burger",
+        description: "02 grilled patties with cheese & veggies",
+        price: 750,
+        image: "/menupic/doublegrill.png"
+      },
+
+      {
+        title: "Double Patty Crunch",
+        description: "02 crispy chicken patties, iceberg, chipotle sauce",
+        price: 750,
+        image: "/menupic/doubleburger.png"
+      },
+
+    ]
+  },
+
+  {
+    category: "Premium Beef Burgers",
+    items: [
+      {
+        title: "American Formage",
+        description: "400g OG beef, 80g Formage cheese, lettuce and fairy sauce",
+        price: 1800,
+        image: "/menupic/americanfromage.png"
+      },
+      {
+        title: "Jaw Breaker",
+        description: "4 beef patties, 4 onion rings, 4 cheese slices, iceberg and red hot sauce",
+        price: 1750,
+        image: "/menupic/jawbreaker.png"
+      },
+      {
+        title: "Triple Barrel",
+        description: "3 smash beef patties, 2 beef pepperonis, 3 cheese split with rapture spicy sauce",
+        price: 1450,
+        image: "/menupic/threebarrel.png"
+      },
+      {
+        title: "Mushroom Legend",
+        description: "3 beef patties, 3 cheddar slices, mushroom sauce and butter brioche bun",
+        price: 1350,
+        image: "/menupic/mushroomlegend.png"
       }
     ]
   },
@@ -172,45 +207,7 @@ export const menuData = [
     ]
   },
 
-  {
-    category: "Premium Beef Burgers",
-    items: [
-      {
-        title: "American Fromage",
-        description: "400g beef, cheese, lettuce, sauce",
-        price: 1800,
-        image: "/menupic/cheeze.png"
-      },
-      {
-        title: "Jaw Breaker",
-        description: "4 patties, onion rings, cheese, sauces",
-        price: 1750,
-        image: "/menupic/jawbreaker.png"
-      },
-      {
-        title: "Triple Barrel",
-        description: "3 smash patties, pepperoni, cheese, spicy sauce",
-        price: 1450,
-        image: "/menupic/trbreaker.png"
-      },
-      {
-        title: "Mushroom Legend",
-        description: "3 patties, cheddar, mushroom sauce",
-        price: 1350,
-        image: "/menupic/mashroom.png"
-      }
-    ]
-  },
 
-  {
-    category: "Add Ons",
-    items: [
-      { title: "Beef Patty", description: "Extra beef patty", price: 350, image: "/menupic/beefburger.png" },
-      { title: "Chicken Patty", description: "Extra chicken patty", price: 250, image: "/menupic/chickenburger.png" },
-      { title: "Meal (Fries + Drink)", description: "Combo add-on", price: 190, image: "/menupic/mealdrink.png" },
-      { title: "Mozzarella Cheese", description: "Extra cheese", price: 150, image: "/menupic/beefburger.png" }
-    ]
-  },
 
   {
     category: "Pretzels",
@@ -223,6 +220,19 @@ export const menuData = [
       },
     ]
   },
+
+
+
+  {
+    category: "Add Ons",
+    items: [
+      { title: "Beef Patty", description: "Extra beef patty", price: 350, image: "/menupic/beefpatty.png" },
+      { title: "Chicken Patty", description: "Extra chicken patty", price: 250, image: "/menupic/beefpatty.png" },
+      { title: "Meal (Fries + Drink)", description: "Combo add-on", price: 190, image: "/menupic/mealdrink.png" },
+      { title: "Mozzarella Cheese", description: "Extra cheese", price: 150, image: "/menupic/cheeze.png" }
+    ]
+  },
+
 
   {
     category: "Beverages",
