@@ -6,14 +6,14 @@ import Image from 'next/image';
 
 
 interface Product {
-    title: string;
-    description: string;
-    price: number | null;
-    image: string;
+  title: string;
+  description: string;
+  price: number | null;
+  image: string;
 }
 
 interface ProductCardProps {
-    item: Product;
+  item: Product;
 }
 
 
@@ -237,113 +237,114 @@ export const menuData = [
 
 
 const ProductCard = ({ item }: ProductCardProps) => {
-    const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
-    return (
-        <div className="bg-[#111111] border border-white/10 rounded-[32px] overflow-hidden flex flex-col h-full group hover:border-brand-yellow/50 transition-all duration-300">
-            {/* 1. Image Upper */}
-            <div className="relative aspect-square w-full bg-[#1a1a1a] p-6 overflow-hidden">
-                <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute top-4 right-4 bg-brand-yellow text-black font-black px-3 py-1 rounded-full text-sm">
-                    Rs. {item.price}
-                </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 flex flex-col flex-1">
-                {/* 2. Title & Description */}
-                <div className="mb-4">
-                    <h3 className="text-brand-white text-xl font-bold uppercase tracking-tight mb-2 group-hover:text-brand-yellow transition-colors">
-                        {item.title}
-                    </h3>
-                    <p className="text-brand-grey text-sm leading-relaxed line-clamp-2">
-                        {item.description}
-                    </p>
-                </div>
-
-                <div className="mt-auto space-y-4">
-                    {/* 3. Quantity Selector */}
-                    <div className="flex items-center justify-between bg-black/40 p-2 rounded-2xl border border-white/5">
-                        <button
-                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
-                        >
-                            <Minus size={16} />
-                        </button>
-                        <span className="text-white font-bold text-lg">{quantity}</span>
-                        <button
-                            onClick={() => setQuantity(quantity + 1)}
-                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
-                        >
-                            <Plus size={16} />
-                        </button>
-                    </div>
-
-                    {/* 4. Add to Cart Button */}
-                    <button className="w-full bg-brand-yellow hover:bg-white text-black font-black uppercase py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
-                        <ShoppingCart size={18} />
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
+  return (
+    <div className="bg-[#111111] border border-white/10 rounded-[32px] overflow-hidden flex flex-col h-full group hover:border-brand-yellow/50 transition-all duration-300">
+      <div className="relative aspect-square w-full bg-[#1a1a1a] p-6 overflow-hidden">
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute top-4 right-4 bg-brand-yellow text-black font-black px-3 py-1 rounded-full text-sm">
+          Rs. {item.price}
         </div>
-    );
+      </div>
+
+
+      <div className="p-6 flex flex-col flex-1">
+        <div className="mb-4">
+          <h3 className="text-brand-white text-xl font-bold uppercase tracking-tight mb-2 group-hover:text-brand-yellow transition-colors">
+            {item.title}
+          </h3>
+          <p className="text-brand-grey text-sm leading-relaxed line-clamp-2">
+            {item.description}
+          </p>
+        </div>
+
+        <div className="mt-auto space-y-4">
+          <div className="flex items-center justify-between bg-black/40 p-2 rounded-2xl border border-white/5">
+            <button
+              onClick={() => setQuantity(Math.max(1, quantity - 1))}
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
+            >
+              <Minus size={16} />
+            </button>
+            <span className="text-white font-bold text-lg">{quantity}</span>
+            <button
+              onClick={() => setQuantity(quantity + 1)}
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
+            >
+              <Plus size={16} />
+            </button>
+          </div>
+
+          <button className="w-full bg-brand-yellow hover:bg-white text-black font-black uppercase py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+            <ShoppingCart size={18} />
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default function FreakMenu() {
-    return (
-        <div className="bg-brand-black min-h-screen pb-20 font-sans selection:bg-brand-yellow selection:text-black">
-            <div className="container mx-auto px-4 max-w-7xl space-y-20 pt-10">
+  return (
+    <div className="bg-brand-black min-h-screen pb-20 font-sans selection:bg-brand-yellow selection:text-black">
+      <div className="container mx-auto px-4 max-w-7xl space-y-20 pt-10">
 
-                {menuData.map((section, idx) => (
-                    <div key={idx} className="space-y-8">
+        {menuData.map((section, idx) => (
+          <div
+            key={idx}
+            id={section.category.replace(/\s+/g, '-').toLowerCase()}
+            className="space-y-8 scroll-mt-32"
+          >
 
-                        <div className="relative w-full h-[200px] md:h-[300px] rounded-[32px] flex flex-col items-center justify-center overflow-hidden mb-12 group">
-                            <Image
-                                src="/cat.png"
-                                alt={section.category}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 80vw"
-                                priority
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
+            <div className="relative w-full h-[120px] md:h-[180px] rounded-[24px] flex flex-col items-center justify-center overflow-hidden mb-8 group">
+              <Image
+                src="/cat.png"
+                alt={section.category}
+                fill
+                sizes="(max-width: 768px) 100vw, 80vw"
+                priority
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
 
-                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
 
-                            <div className="text-center z-10 relative">
-                                <h2 className="text-5xl md:text-8xl font-[1000] uppercase tracking-tighter text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.6)] leading-none">
-                                    {section.category}
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                            {section.items.map((item, i) => (
-                                <ProductCard key={i} item={item} />
-                            ))}
-                        </div>
-
-                    </div>
-                ))}
-
+              <div className="text-center z-10 relative">
+                <h2 className="text-4xl md:text-6xl font-[1000] uppercase tracking-tighter text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] leading-none">
+                  {section.category}
+                </h2>
+              </div>
             </div>
 
-            <div className="fixed bottom-8 right-8 z-50">
-                <button className="bg-brand-yellow text-black p-5 rounded-[24px] shadow-[0_20px_50px_rgba(251,161,8,0.3)] hover:-translate-y-2 transition-all duration-300 group">
-                    <div className="relative">
-                        <ShoppingCart size={32} strokeWidth={2.5} />
-                        <span className="absolute -top-6 -right-6 bg-white text-black text-xs font-black w-7 h-7 flex items-center justify-center rounded-full border-4 border-brand-black">
-                            4
-                        </span>
-                    </div>
-                </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {section.items.map((item, i) => (
+                <ProductCard key={i} item={item} />
+              ))}
             </div>
 
-            <style jsx global>{`
+          </div>
+        ))}
+
+      </div>
+
+      <div className="fixed bottom-8 right-8 z-50">
+        <button className="bg-brand-yellow text-black p-5 rounded-[24px] shadow-[0_20px_50px_rgba(251,161,8,0.3)] hover:-translate-y-2 transition-all duration-300 group">
+          <div className="relative">
+            <ShoppingCart size={32} strokeWidth={2.5} />
+            <span className="absolute -top-6 -right-6 bg-white text-black text-xs font-black w-7 h-7 flex items-center justify-center rounded-full border-4 border-brand-black">
+              4
+            </span>
+          </div>
+        </button>
+      </div>
+
+      <style jsx global>{`
         body {
           background-color: #000000;
         }
@@ -358,6 +359,6 @@ export default function FreakMenu() {
           border-radius: 10px;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

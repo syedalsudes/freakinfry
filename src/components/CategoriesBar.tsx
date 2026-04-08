@@ -10,6 +10,20 @@ export default function CategoriesBar() {
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollRef = useRef<HTMLDivElement>(null);
 
+
+    const scrollToCategory = (categoryName: string) => {
+        setActiveTab(categoryName);
+        const id = categoryName.replace(/\s+/g, '-').toLowerCase();
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
+    };
+
     const checkScroll = () => {
         if (scrollRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -30,10 +44,10 @@ export default function CategoriesBar() {
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
             const scrollAmount = 300;
-            const target = direction === 'left' 
-                ? scrollRef.current.scrollLeft - scrollAmount 
+            const target = direction === 'left'
+                ? scrollRef.current.scrollLeft - scrollAmount
                 : scrollRef.current.scrollLeft + scrollAmount;
-            
+
             scrollRef.current.scrollTo({ left: target, behavior: 'smooth' });
         }
     };
@@ -41,10 +55,10 @@ export default function CategoriesBar() {
     return (
         <div className="sticky top-0 z-[90] bg-black/95 backdrop-blur-md border-b border-white/5 shadow-2xl">
             <div className="container mx-auto max-w-7xl relative px-2 py-2">
-                
+
                 {showLeftArrow && (
                     <div className="absolute left-0 top-0 bottom-0 z-30 flex items-center pr-12 bg-gradient-to-r from-black via-black/90 to-transparent pointer-events-none">
-                        <button 
+                        <button
                             onClick={() => scroll('left')}
                             className="pointer-events-auto bg-[#1A1A1A] border border-white/10 p-2 rounded-full text-white hover:bg-[#FBA108] hover:text-black transition-all shadow-lg ml-2"
                         >
@@ -53,18 +67,18 @@ export default function CategoriesBar() {
                     </div>
                 )}
 
-                <div 
+                <div
                     ref={scrollRef}
                     className="flex items-center gap-3 overflow-x-auto no-scrollbar scroll-smooth px-2 py-1"
                 >
                     {menuData.map((cat, index) => {
                         const isActive = activeTab === cat.category;
                         const image = cat.items?.[0]?.image || "/burger.png";
-                        
+
                         return (
                             <button
                                 key={index}
-                                onClick={() => setActiveTab(cat.category)}
+                                onClick={() => scrollToCategory(cat.category)}
                                 className={`
                                     flex-shrink-0 flex flex-col items-center justify-center
                                     w-[100px] h-[95px] md:w-[120px] md:h-[110px] p-3 rounded-2xl
@@ -87,9 +101,8 @@ export default function CategoriesBar() {
                                     />
                                 </div>
 
-                                <span className={`text-[9px] md:text-[10px] font-black uppercase tracking-widest text-center leading-none ${
-                                    isActive ? 'text-black' : 'text-[#A3A3A3]'
-                                }`}>
+                                <span className={`text-[9px] md:text-[10px] font-black uppercase tracking-widest text-center leading-none ${isActive ? 'text-black' : 'text-[#A3A3A3]'
+                                    }`}>
                                     {cat.category}
                                 </span>
 
@@ -103,7 +116,7 @@ export default function CategoriesBar() {
 
                 {showRightArrow && (
                     <div className="absolute right-0 top-0 bottom-0 z-30 flex items-center pl-12 bg-gradient-to-l from-black via-black/90 to-transparent pointer-events-none">
-                        <button 
+                        <button
                             onClick={() => scroll('right')}
                             className="pointer-events-auto bg-[#1A1A1A] border border-white/10 p-2 rounded-full text-white hover:bg-[#FBA108] hover:text-black transition-all shadow-lg mr-2"
                         >
