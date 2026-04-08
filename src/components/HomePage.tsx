@@ -159,49 +159,49 @@ export default function FreakInFryHome() {
         </div>
       </nav>
 
-      <section className="relative z-0 mt-4 md:mt-10 mb-16 mx-auto w-[94%] max-w-7xl 2xl:max-w-[1600px]">
 
-        <div className="relative min-h-[600px] md:h-[650px] 2xl:h-[800px] w-full rounded-[2.5rem] md:rounded-[3.5rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row">
+      <section className="relative z-0 mt-4 md:mt-6 mb-16 mx-auto w-[96%] max-w-[1800px]">
+        <div className="relative min-h-[600px] md:min-h-[80vh] 2xl:min-h-[85vh] w-full rounded-[2.5rem] md:rounded-[4rem] bg-[#0A0A0A] overflow-hidden border border-white/5 shadow-2xl flex flex-col md:flex-row">
+
           <div className="absolute top-0 right-0 w-full md:w-[55%] 2xl:w-[50%] h-[40%] md:h-full bg-[#FBA108] md:skew-x-[-12deg] md:translate-x-20 z-0" />
+          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-24 2xl:px-32 py-12 md:py-20">
 
-          <div className="relative w-full h-[250px] md:h-full md:w-1/2 md:absolute md:right-0 z-10 flex items-center justify-center p-6 md:p-12 2xl:p-20 order-first md:order-none">
-            <div className="relative w-full h-full transition-transform duration-700 hover:scale-110 2xl:scale-110">
+            <div className="bg-black/50 backdrop-blur-md text-[#FBA108] px-4 py-2 rounded-full w-fit flex items-center space-x-2 mb-6 md:mb-10 border border-[#FBA108]/20">
+              <Zap size={16} fill="currentColor" />
+              <span className="text-xs md:text-sm 2xl:text-base font-black uppercase tracking-widest">Most Wanted Deal</span>
+            </div>
+
+            <h2 className="text-white text-5xl sm:text-6xl md:text-6xl lg:text-8xl 2xl:text-[10rem] font-[900] leading-[0.85] tracking-tighter uppercase italic">
+              CRUNCHY <br />
+              <span className="text-[#FBA108]">FREAKY</span> <br className="md:hidden" />
+              <span className="md:ml-6">BOX</span>
+            </h2>
+
+            <p className="text-[#A3A3A3] mt-8 max-w-xs md:max-w-lg 2xl:max-w-2xl text-base md:text-xl 2xl:text-3xl font-medium leading-relaxed">
+              2 Zingers, 2 Fries, 2 Drinks & a whole lot of Freakiness.
+              <span className="text-[#FBA108] font-bold block mt-2">Limited time offer!</span>
+            </p>
+
+            <button className="mt-10 2xl:mt-16 bg-white text-black font-black uppercase py-5 2xl:py-8 px-10 md:px-14 2xl:px-20 rounded-2xl 2xl:rounded-[2.5rem] w-full md:w-fit flex items-center justify-center space-x-4 hover:bg-[#FBA108] transition-all group text-sm md:text-lg 2xl:text-2xl hover:scale-105">
+              <span>Order Now</span>
+              <ChevronRight className="group-hover:translate-x-2 transition-transform" size={24} strokeWidth={3} />
+            </button>
+          </div>
+
+          <div className="relative w-full h-[350px] md:h-auto md:w-1/2 flex items-center justify-center p-8 md:p-12 2xl:p-24 z-10">
+            <div className="relative w-full h-full min-h-[300px] md:min-h-[500px] 2xl:min-h-[700px] transition-transform duration-700">
               <Image
                 src="/banner.png"
                 alt="Hero Deal"
                 fill
                 priority
-                className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                className="object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)] scale-110 2xl:scale-125"
               />
             </div>
           </div>
 
-          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 md:px-16 lg:px-24 2xl:px-32 py-8 md:py-0">
-
-            <div className="bg-black/50 backdrop-blur-md text-[#FBA108] px-3 py-1.5 rounded-full w-fit flex items-center space-x-2 mb-4 md:mb-8 border border-[#FBA108]/20">
-              <Zap size={14} fill="currentColor" />
-              <span className="text-[10px] md:text-xs 2xl:text-sm font-black uppercase tracking-widest">Most Wanted Deal</span>
-            </div>
-
-            <h2 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl 2xl:text-[9rem] font-[900] leading-[0.9] tracking-tighter uppercase italic">
-              CRUNCHY <br />
-              <span className="text-[#FBA108]">FREAKY</span> <br className="md:hidden" />
-              <span className="md:ml-4">BOX</span>
-            </h2>
-
-            <p className="text-[#A3A3A3] mt-6 max-w-xs md:max-w-md 2xl:max-w-xl text-sm md:text-lg 2xl:text-2xl font-medium leading-relaxed">
-              2 Zingers, 2 Fries, 2 Drinks & a whole lot of Freakiness.
-              <span className="text-[#FBA108] font-bold block mt-1">Limited time offer!</span>
-            </p>
-
-            <button className="mt-8 2xl:mt-12 bg-white text-black font-black uppercase py-4 2xl:py-6 px-8 md:px-10 2xl:px-14 rounded-2xl 2xl:rounded-3xl w-full md:w-fit flex items-center justify-center space-x-3 hover:bg-[#FBA108] transition-all group text-sm 2xl:text-xl">
-              <span>Order Now</span>
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
-            </button>
-          </div>
-
-          <div className="absolute bottom-[-10px] left-[-10px] select-none pointer-events-none opacity-[0.03] z-0">
-            <h1 className="text-white text-[15vw] md:text-[20rem] 2xl:text-[28rem] font-black italic uppercase leading-none">
+          <div className="absolute bottom-[-20px] left-[-20px] select-none pointer-events-none opacity-[0.04] z-0">
+            <h1 className="text-white text-[20vw] 2xl:text-[25vw] font-black italic uppercase leading-none">
               FREAK
             </h1>
           </div>
