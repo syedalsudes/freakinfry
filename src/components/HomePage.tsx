@@ -7,33 +7,28 @@ import Image from 'next/image';
 export default function FreakInFryHome() {
   const [selectedBranch, setSelectedBranch] = useState("Select Outlet");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false); // State for Cart Popup
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
   const branches = ["Hussainabad", "Bahadarabad"];
 
-  // Static Items for Cart
   const cartItems = [
-    { id: 1, name: "Zinger Burger", price: 550, qty: 1, img: "/meal.png" },
-    { id: 2, name: "Loaded Fries", price: 450, qty: 2, img: "/meal.png" },
-    { id: 3, name: "Freaky Box", price: 1200, qty: 1, img: "/meal.png" },
-    { id: 4, name: "Soft Drink", price: 120, qty: 3, img: "/meal.png" },
+    { id: 1, name: "Zinger Burger", price: 550, qty: 1, img: "/menupic/chickenburger.png" },
+    { id: 2, name: "Loaded Fries", price: 450, qty: 2, img: "/menupic/fries.png" },
+    { id: 3, name: "Pathaka Chicken", price: 1200, qty: 1, img: "/menupic/pathakachicken.png" },
+    { id: 4, name: "Soft Drink", price: 120, qty: 3, img: "/menupic/marinda.png" },
   ];
 
   return (
     <div className={`min-h-screen bg-black text-white font-sans selection:bg-[#FBA108] selection:text-black ${isCartOpen ? 'overflow-hidden' : ''}`}>
       
-      {/* --- CART OVERLAY / SIDEBAR --- */}
       {isCartOpen && (
         <div className="fixed inset-0 z-[200] flex justify-end">
-          {/* Backdrop */}
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => setIsCartOpen(false)}
           />
           
-          {/* Sidebar Panel */}
           <div className="relative w-full max-w-[400px] bg-[#111111] h-full shadow-2xl border-l border-white/10 flex flex-col animate-in slide-in-from-right duration-300">
-            {/* Header */}
             <div className="p-6 border-b border-white/10 flex justify-between items-center bg-[#1A1A1A]">
               <div className="flex items-center gap-3">
                 <ShoppingCart className="text-[#FBA108]" size={24} />

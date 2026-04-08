@@ -10,9 +10,15 @@ export default function CategoriesBar() {
     const [showRightArrow, setShowRightArrow] = useState(true);
     const scrollRef = useRef<HTMLDivElement>(null);
 
+    const isScrolling = useRef(false);
+    const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
 
     const scrollToCategory = (categoryName: string) => {
         setActiveTab(categoryName);
+
+        isScrolling.current = true;
+
         const id = categoryName.replace(/\s+/g, '-').toLowerCase();
         const element = document.getElementById(id);
 
@@ -21,6 +27,12 @@ export default function CategoriesBar() {
                 behavior: "smooth",
                 block: "start",
             });
+
+            if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+            scrollTimeout.current = setTimeout(() => {
+                isScrolling.current = false;
+            }, 800);
         }
     };
 
@@ -31,6 +43,44 @@ export default function CategoriesBar() {
             setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
         }
     };
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-25% 0px -65% 0px',
+            threshold: 0,
+        };
+
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            if (isScrolling.current) return;
+
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const activeCat = menuData.find(
+                        (cat) => cat.category.replace(/\s+/g, '-').toLowerCase() === id
+                    );
+
+                    if (activeCat) {
+                        setActiveTab(activeCat.category);
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        menuData.forEach((cat) => {
+            const id = cat.category.replace(/\s+/g, '-').toLowerCase();
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
+        });
+
+        return () => {
+            observer.disconnect();
+            if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+        };
+    }, []);
 
     useEffect(() => {
         const currentRef = scrollRef.current;
