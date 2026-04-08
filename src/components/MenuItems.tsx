@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Plus, Minus } from 'lucide-react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
 
 
 interface Product {
@@ -235,54 +237,53 @@ export const menuData = [
 ];
 
 
-
 const ProductCard = ({ item }: ProductCardProps) => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="bg-[#111111] border border-white/10 rounded-[32px] overflow-hidden flex flex-col h-full group hover:border-brand-yellow/50 transition-all duration-300">
-      <div className="relative aspect-square w-full bg-[#1a1a1a] p-6 overflow-hidden">
+    <div className="bg-[#111111] border border-white/10 rounded-[24px] md:rounded-[32px] overflow-hidden flex flex-col h-full group hover:border-brand-yellow/50 transition-all duration-300">
+
+      <div className="relative h-[180px] sm:h-[220px] md:aspect-square w-full bg-[#1a1a1a] p-4 md:p-6 overflow-hidden">
         <Image
           src={item.image}
           alt={item.title}
           fill
           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute top-4 right-4 bg-brand-yellow text-black font-black px-3 py-1 rounded-full text-sm">
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-brand-yellow text-black font-black px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm">
           Rs. {item.price}
         </div>
       </div>
 
-
-      <div className="p-6 flex flex-col flex-1">
-        <div className="mb-4">
-          <h3 className="text-brand-white text-xl font-bold uppercase tracking-tight mb-2 group-hover:text-brand-yellow transition-colors">
+      <div className="p-4 md:p-6 flex flex-col flex-1">
+        <div className="mb-3 md:mb-4">
+          <h3 className="text-brand-white text-lg md:text-xl font-bold uppercase tracking-tight mb-1 md:mb-2 group-hover:text-brand-yellow transition-colors line-clamp-1">
             {item.title}
           </h3>
-          <p className="text-brand-grey text-sm leading-relaxed line-clamp-2">
+          <p className="text-brand-grey text-xs md:text-sm leading-relaxed line-clamp-2 min-h-[32px] md:min-h-[40px]">
             {item.description}
           </p>
         </div>
 
-        <div className="mt-auto space-y-4">
-          <div className="flex items-center justify-between bg-black/40 p-2 rounded-2xl border border-white/5">
+        <div className="mt-auto space-y-3 md:space-y-4">
+          <div className="flex items-center justify-between bg-black/40 p-1.5 md:p-2 rounded-xl md:rounded-2xl border border-white/5">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
+              className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
             >
-              <Minus size={16} />
+              <Minus size={14} />
             </button>
-            <span className="text-white font-bold text-lg">{quantity}</span>
+            <span className="text-white font-bold text-base md:text-lg">{quantity}</span>
             <button
               onClick={() => setQuantity(quantity + 1)}
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
+              className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl bg-white/5 text-white hover:bg-brand-yellow hover:text-black transition-all"
             >
-              <Plus size={16} />
+              <Plus size={14} />
             </button>
           </div>
 
-          <button className="w-full bg-brand-yellow hover:bg-white text-black font-black uppercase py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
-            <ShoppingCart size={18} />
+          <button className="w-full bg-brand-yellow hover:bg-white text-black font-black uppercase py-3 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+            <ShoppingCart size={16} />
             Add to Cart
           </button>
         </div>
@@ -291,73 +292,72 @@ const ProductCard = ({ item }: ProductCardProps) => {
   );
 };
 
+
 export default function FreakMenu() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="bg-brand-black min-h-screen pb-20 font-sans selection:bg-brand-yellow selection:text-black">
-      <div className="container mx-auto px-4 max-w-7xl space-y-20 pt-10">
+    <div className="bg-brand-black min-h-screen pb-20 font-sans selection:bg-brand-yellow selection:text-black overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-7xl pt-10">
 
         {menuData.map((section, idx) => (
           <div
             key={idx}
             id={section.category.replace(/\s+/g, '-').toLowerCase()}
-            className="space-y-8 scroll-mt-32"
+            className="mb-16 scroll-mt-32"
           >
-
             <div className="relative w-full h-[120px] md:h-[180px] rounded-[24px] flex flex-col items-center justify-center overflow-hidden mb-8 group">
               <Image
                 src="/cat.png"
                 alt={section.category}
                 fill
-                sizes="(max-width: 768px) 100vw, 80vw"
-                priority
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
               />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
-
-              <div className="text-center z-10 relative">
-                <h2 className="text-4xl md:text-6xl font-[1000] uppercase tracking-tighter text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] leading-none">
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20"></div>
+              <div className="text-center z-10 relative px-4 w-full">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-[1000] uppercase text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] tracking-tighter text-center leading-[0.9] md:leading-none text-balance">
                   {section.category}
                 </h2>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="
+              flex overflow-x-auto snap-x snap-mandatory gap-4 no-scrollbar pb-10
+              -mx-4 px-4 
+              md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-0 md:mx-0 md:gap-6
+            ">
               {section.items.map((item, i) => (
-                <ProductCard key={i} item={item} />
+                <div
+                  key={i}
+                  className="snap-center shrink-0 md:snap-align-none"
+                >
+                  <motion.div
+                    initial={isMobile ? { scale: 0.9, opacity: 0.6 } : { scale: 1, opacity: 1 }}
+                    whileInView={isMobile ? { scale: 1, opacity: 1 } : {}}
+                    viewport={isMobile ? { once: false, amount: 0.6 } : {}}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    className="w-[85vw] sm:w-[400px] md:w-full h-full"
+                  >
+                    <ProductCard item={item} />
+                  </motion.div>
+                </div>
               ))}
             </div>
-
           </div>
         ))}
 
       </div>
 
-      <div className="fixed bottom-8 right-8 z-50">
-        <button className="bg-brand-yellow text-black p-5 rounded-[24px] shadow-[0_20px_50px_rgba(251,161,8,0.3)] hover:-translate-y-2 transition-all duration-300 group">
-          <div className="relative">
-            <ShoppingCart size={32} strokeWidth={2.5} />
-            <span className="absolute -top-6 -right-6 bg-white text-black text-xs font-black w-7 h-7 flex items-center justify-center rounded-full border-4 border-brand-black">
-              4
-            </span>
-          </div>
-        </button>
-      </div>
-
       <style jsx global>{`
-        body {
-          background-color: #000000;
-        }
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #FBA108;
-          border-radius: 10px;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   );
